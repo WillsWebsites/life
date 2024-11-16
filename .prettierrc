@@ -1,0 +1,7 @@
+{
+  "plugins": ["prettier-plugin-organize-imports"],
+  "organizeImportsSkipDestructiveCodeActions": true,
+  "semi": false,
+  "printWidth": 115,
+  "singleQuote": true
+}
