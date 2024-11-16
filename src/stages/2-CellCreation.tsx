@@ -1,16 +1,13 @@
 import { Canvas } from '@react-three/fiber'
 import { useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Mesh } from 'three'
 
 const CellCreation = () => {
-  const navigate = useNavigate()
   const buttonRef = useRef<Mesh>(null)
   const [color, setColor] = useState('red')
   const [scale, setScale] = useState(1)
 
   const handleButtonClick = () => {
-    navigate('/next-page')
     setScale(1.2)
   }
 
