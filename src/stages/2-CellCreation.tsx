@@ -4,11 +4,11 @@ import { Mesh } from 'three'
 
 const CellCreation = () => {
   const buttonRef = useRef<Mesh>(null)
-  const [color, setColor] = useState('red')
+  const [color, setColor] = useState('orange')
   const [scale, setScale] = useState(1)
 
   const handleButtonClick = () => {
-    setScale(1.2)
+    setScale((scale) => scale + 0.1)
   }
 
   return (
@@ -28,11 +28,11 @@ const CellCreation = () => {
           scale={scale}
           onClick={handleButtonClick}
           onPointerOver={() => {
-            setColor('orange')
+            setColor('red')
             document.body.style.cursor = 'pointer'
           }}
           onPointerOut={() => {
-            setColor('red')
+            setColor('orange')
             document.body.style.cursor = 'auto'
           }}
         >
