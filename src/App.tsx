@@ -5,7 +5,7 @@ import Intro from './stages/Intro'
 import Singularity from './stages/Singularity'
 
 function App() {
-  const [introComplete, setIntroComplete] = useState(false)
+  const [introComplete, setIntroComplete] = useState(true)
   const [singularityComplete, setSingularityComplete] = useState(false)
   const [bigBangComplete, setBigBangComplete] = useState(false)
 

@@ -12,7 +12,7 @@ const Singularity = ({ onComplete }: { onComplete: () => void }) => {
         <h2 className="text-white text-2xl font-bold">01. The Singularity</h2>
         <p className="text-white text-sm flex items-center gap-2">
           <span>Potential Energy: </span>
-          {showInfinity ? '∞' : `${potentialEnergy.toFixed(2)}%`}
+          <span className="min-w-[55px]">{showInfinity ? '∞' : `${potentialEnergy.toFixed(2)}%`}</span>
         </p>
       </div>
       <Canvas
