@@ -14,7 +14,13 @@ const Fate = ({ onComplete }: { onComplete: () => void }) => {
           1000,
           'Every once in a while, fate extends a hand',
           500,
-          'Every once in a while, fate extends a hand into the darkness of the cosmos.',
+          'Every once in a while, fate extends a hand into the darkness of the cosmos',
+          1500,
+          'Sometimes,',
+          1000,
+          'Sometimes, all it takes',
+          500,
+          'Sometimes, all it takes is a single cell',
           1500,
           () => {
             setFadeout(true)
