@@ -1,4 +1,5 @@
-import TopBar from '@/components/TopBar'
+import TopBar from '@/components/TopBar/TopBar'
+import TopBarItem from '@/components/TopBar/TopBarItem'
 import { Stages } from '@/types/stages'
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react'
@@ -11,10 +12,7 @@ const Singularity = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div className="w-full h-full animate-fade-in-3 relative">
       <TopBar stage={Stages.SINGULARITY}>
-        <p className="text-white text-sm flex items-center gap-2">
-          <span>Energy: </span>
-          <span className="min-w-[55px]">{showInfinity ? '∞' : `${energyPercentage.toFixed(2)}%`}</span>
-        </p>
+        <TopBarItem value={showInfinity ? '∞' : `${energyPercentage.toFixed(2)}%`} name="Energy" />
       </TopBar>
       <Canvas
         camera={{

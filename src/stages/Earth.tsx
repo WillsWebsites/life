@@ -1,5 +1,7 @@
 import StageLayout from '@/components/layouts/StageLayout'
-import TopBar from '@/components/TopBar'
+import TopBar from '@/components/TopBar/TopBar'
+import TopBarItem from '@/components/TopBar/TopBarItem'
+import { useMotherNature } from '@/hooks/useMotherNature'
 import { cn, generateRandomId } from '@/lib/utils'
 import { Stages } from '@/types/stages'
 import { useEffect, useState } from 'react'
@@ -8,7 +10,8 @@ const defaultCell = { id: generateRandomId(), x: window.innerWidth / 2, y: windo
 
 const Earth = () => {
   const [cells, setCells] = useState([defaultCell])
-  const [cellCount, setCellCount] = useState(1)
+  const cellCount = useMotherNature((state) => state.cellCount)
+  const updateCellCount = useMotherNature((state) => state.updateCellCount)
 
   const handleCellClick = (id: string) => {
     const intensity = 2
@@ -36,7 +39,7 @@ const Earth = () => {
       return updatedCells
     })
 
-    setCellCount((prev) => prev + 1)
+    updateCellCount(cellCount + 1)
   }
 
   useEffect(() => {
@@ -58,7 +61,9 @@ const Earth = () => {
 
   return (
     <StageLayout className="bg-gradient-to-br from-slate-700 to-slate-900">
-      <TopBar stage={Stages.EARTH}>{cellCount}</TopBar>
+      <TopBar stage={Stages.EARTH}>
+        <TopBarItem value={cellCount} name="Cells" />
+      </TopBar>
       {cells.map((cell) => (
         <button
           key={cell.id}

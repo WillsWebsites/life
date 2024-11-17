@@ -1,11 +1,11 @@
+import { useSettings } from '@/hooks/useSettings'
 import { Volume2, VolumeX } from 'lucide-react'
 
-const AudioControls = ({ onPlayAudio, isPaused }: { onPlayAudio: () => void; isPaused: boolean }) => {
-  return (
-    <button onClick={onPlayAudio} className="absolute bottom-4 right-4">
-      {isPaused ? <Volume2 /> : <VolumeX />}
-    </button>
-  )
+const AudioControls = () => {
+  const isPlaying = useSettings((state) => state.isPlaying)
+  const handleAudioPlay = useSettings((state) => state.handleAudioPlay)
+
+  return <button onClick={handleAudioPlay}>{!isPlaying ? <Volume2 /> : <VolumeX />}</button>
 }
 
 export default AudioControls
