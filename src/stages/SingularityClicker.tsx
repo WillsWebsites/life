@@ -7,15 +7,15 @@ import { Mesh, Vector2 } from 'three'
 
 const SingularityClicker = ({
   onComplete,
-  setPotentialEnergy,
+  setEnergyPercentage,
   setShowInfinity,
 }: {
   onComplete: () => void
-  setPotentialEnergy: Dispatch<SetStateAction<number>>
+  setEnergyPercentage: Dispatch<SetStateAction<number>>
   setShowInfinity: Dispatch<SetStateAction<boolean>>
 }) => {
   const buttonRef = useRef<Mesh>(null)
-  const [scale, setScale] = useState(0.2)
+  const [scale, setScale] = useState(7.1)
   const [complete, setComplete] = useState(false)
   const [isScalingDown, setIsScalingDown] = useState(false)
   const [canGlitch, setCanGlitch] = useState(true)
@@ -27,8 +27,9 @@ const SingularityClicker = ({
   }
 
   useFrame(() => {
-    const potentialEnergy = Math.min(100, Math.max(0.01, ((scale - 0.2) / (7 - 0.2)) * 100))
-    setPotentialEnergy(potentialEnergy)
+    const energyPercentage = Math.min(100, Math.max(0.01, ((scale - 0.2) / (7 - 0.2)) * 100))
+    setEnergyPercentage(energyPercentage)
+
     const startScaleDown = async () => {
       if (isScalingDown) return
       setIsScalingDown(true)
@@ -40,20 +41,19 @@ const SingularityClicker = ({
       const startTime = performance.now()
       const initialScale = scale
 
-      setCanGlitch(false)
-
       const animateScaleDown = async (currentTime: number) => {
         const elapsed = currentTime - startTime
         const progress = Math.min(elapsed / duration, 1)
 
         const easedProgress = Math.pow(progress, 3)
-        const newScale = initialScale * Math.max(0.01, 1 - easedProgress)
+        const newScale = initialScale * Math.max(0.005, 1 - easedProgress)
 
         setScale(newScale)
 
         if (progress < 1) {
           requestAnimationFrame(animateScaleDown)
         } else {
+          setCanGlitch(false)
           await sleep(1000)
           onComplete()
         }
@@ -108,11 +108,12 @@ const SingularityClicker = ({
         }}
       >
         <sphereGeometry />
-        <meshNormalMaterial opacity={0.1} />
+        {canGlitch && <meshNormalMaterial opacity={0.1} />}
+        {!canGlitch && <meshBasicMaterial color="white" />}
       </mesh>
 
       <>
-        {complete && (
+        {complete && canGlitch && (
           <Glitch duration={new Vector2(0.1, 0.3)} strength={glitchStrength} mode={GlitchMode.CONSTANT_MILD} />
         )}
       </>

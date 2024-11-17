@@ -7,9 +7,9 @@ import Singularity from './stages/Singularity'
 
 function App() {
   const [introComplete, setIntroComplete] = useState(true)
-  const [singularityComplete, setSingularityComplete] = useState(true)
-  const [bigBangComplete, setBigBangComplete] = useState(true)
-  const [fateComplete, setFateComplete] = useState(true)
+  const [singularityComplete, setSingularityComplete] = useState(false)
+  const [bigBangComplete, setBigBangComplete] = useState(false)
+  const [fateComplete, setFateComplete] = useState(false)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full">
