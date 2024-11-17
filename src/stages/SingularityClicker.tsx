@@ -69,9 +69,9 @@ const SingularityClicker = ({
         startScaleDown()
         return prevScale
       } else if (prevScale >= 5) {
-        return prevScale - prevScale * 0.0007
+        return prevScale - prevScale * 0.0025
       } else if (prevScale >= 0.2) {
-        return prevScale - prevScale * 0.0011
+        return prevScale - prevScale * 0.004
       } else {
         return prevScale
       }

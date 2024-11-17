@@ -50,7 +50,7 @@ const BigBang = ({ onComplete }: { onComplete: () => void }) => {
         camera={{
           near: 0.01,
           far: 10000,
-          position: [0, 0, -10],
+          position: [0, 0, -5],
         }}
       >
         <Points
