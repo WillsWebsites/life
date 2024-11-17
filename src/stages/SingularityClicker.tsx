@@ -15,7 +15,7 @@ const SingularityClicker = ({
   setShowInfinity: Dispatch<SetStateAction<boolean>>
 }) => {
   const buttonRef = useRef<Mesh>(null)
-  const [scale, setScale] = useState(7)
+  const [scale, setScale] = useState(0.2)
   const [complete, setComplete] = useState(false)
   const [isScalingDown, setIsScalingDown] = useState(false)
   const [canGlitch, setCanGlitch] = useState(true)
