@@ -1,17 +1,20 @@
 import { useState } from 'react'
-import Intro from './stages/0-Intro'
-import CreateLife from './stages/1-CreateLife'
-import CellCreation from './stages/2-CellCreation'
+import BigBang from './components/BigBang'
+import Earth from './stages/Earth'
+import Intro from './stages/Intro'
+import Singularity from './stages/Singularity'
 
 function App() {
   const [introComplete, setIntroComplete] = useState(false)
-  const [createLifeComplete, setCreateLifeComplete] = useState(false)
+  const [singularityComplete, setSingularityComplete] = useState(false)
+  const [bigBangComplete, setBigBangComplete] = useState(false)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full">
       {!introComplete && <Intro onComplete={() => setIntroComplete(true)} />}
-      {introComplete && !createLifeComplete && <CreateLife onComplete={() => setCreateLifeComplete(true)} />}
-      {createLifeComplete && <CellCreation />}
+      {introComplete && !singularityComplete && <Singularity onComplete={() => setSingularityComplete(true)} />}
+      {singularityComplete && !bigBangComplete && <BigBang onComplete={() => setBigBangComplete(true)} />}
+      {bigBangComplete && <Earth />}
     </div>
   )
 }

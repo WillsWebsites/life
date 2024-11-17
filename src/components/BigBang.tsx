@@ -19,7 +19,7 @@ const BigBang = ({ onComplete }: { onComplete: () => void }) => {
     directions[i * 3 + 2] = direction.z
   }
 
-  const delay = 1500
+  const delay = 0
   const startTime = useRef(Date.now())
 
   useEffect(() => {
@@ -45,21 +45,23 @@ const BigBang = ({ onComplete }: { onComplete: () => void }) => {
   }, [])
 
   return (
-    <Canvas
-      camera={{
-        near: 0.01,
-        far: 10000,
-        position: [0, 0, -10],
-      }}
-    >
-      <Points
-        ref={particlesRef}
-        positions={positions}
-        stride={3}
-        sizes={sizes}
-        material={new THREE.PointsMaterial({ sizeAttenuation: true, size: sizes[0] })}
-      />
-    </Canvas>
+    <div className="w-full h-full animate-fade-out-7">
+      <Canvas
+        camera={{
+          near: 0.01,
+          far: 10000,
+          position: [0, 0, -10],
+        }}
+      >
+        <Points
+          ref={particlesRef}
+          positions={positions}
+          stride={3}
+          sizes={sizes}
+          material={new THREE.PointsMaterial({ sizeAttenuation: true, size: sizes[0] })}
+        />
+      </Canvas>
+    </div>
   )
 }
 

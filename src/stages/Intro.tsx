@@ -5,30 +5,30 @@ import { TypeAnimation } from 'react-type-animation'
 
 const Intro = ({ onComplete }: { onComplete: () => void }) => {
   const [fadeout, setFadeout] = useState(false)
-  const [showCreateLife, setShowCreateLife] = useState(false)
-  const [createLife, setCreateLife] = useState(false)
+  const [showCreateLight, setShowCreateLight] = useState(false)
+  const [createLight, setCreateLight] = useState(false)
 
-  const handleCreateLife = () => {
-    setCreateLife(true)
+  const handleCreateLight = () => {
+    setCreateLight(true)
     setTimeout(() => {
       onComplete()
-    }, 1000)
+    }, 2000)
   }
 
   return (
     <div>
-      {!showCreateLife && (
+      {!showCreateLight && (
         <div className={cn('transition-opacity duration-1000', fadeout ? 'opacity-0' : 'opacity-100')}>
           <TypeAnimation
             sequence={[
-              3000,
+              2500,
               'In the beginning',
               1500,
               'There was nothing',
               500,
               'There was nothing, only darkness',
               1500,
-              'and then...',
+              'Then...',
               1500,
               'There was light',
               2000,
@@ -37,7 +37,7 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
               },
               1100,
               () => {
-                setShowCreateLife(true)
+                setShowCreateLight(true)
               },
             ]}
             wrapper="span"
@@ -51,16 +51,13 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
         </div>
       )}
 
-      {showCreateLife && (
+      {showCreateLight && (
         <Button
           variant="outline"
-          onClick={handleCreateLife}
-          className={cn(
-            'transition-all animate-fadeIn opacity-0',
-            createLife && 'h-0 overflow-hidden text-[0px] p-0 border-none delay-200 duration-1000',
-          )}
+          onClick={handleCreateLight}
+          className={cn('transition-all animate-fade-in-1 opacity-0', createLight && '!animate-fade-out-0')}
         >
-          Create life
+          Create light
         </Button>
       )}
     </div>

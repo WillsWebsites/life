@@ -3,6 +3,9 @@ export default {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      orbitron: ['Orbitron', 'sans-serif'],
+    },
     extend: {
       borderRadius: {
         lg: 'var(--radius)',
@@ -53,8 +56,25 @@ export default {
       },
     },
     animation: {
-      fadeIn: 'fadeIn 1s ease-in forwards',
-      fadeOut: 'fadeOut 1s ease-in 7s forwards',
+      'fade-in-0': 'fadeIn 0s ease-in forwards',
+      'fade-in-1': 'fadeIn 1s ease-in forwards',
+      'fade-in-2': 'fadeIn 2s ease-in forwards',
+      'fade-in-3': 'fadeIn 3s ease-in forwards',
+      'fade-in-4': 'fadeIn 4s ease-in forwards',
+      'fade-in-5': 'fadeIn 5s ease-in forwards',
+      'fade-in-6': 'fadeIn 6s ease-in forwards',
+      'fade-in-7': 'fadeIn 7s ease-in forwards',
+      'fade-in-8': 'fadeIn 8s ease-in forwards',
+
+      'fade-out-0': 'fadeOut 1s ease-in forwards',
+      'fade-out-1': 'fadeOut 1s ease-in 1s forwards',
+      'fade-out-2': 'fadeOut 1s ease-in 2s forwards',
+      'fade-out-3': 'fadeOut 1s ease-in 3s forwards',
+      'fade-out-4': 'fadeOut 1s ease-in 4s forwards',
+      'fade-out-5': 'fadeOut 1s ease-in 5s forwards',
+      'fade-out-6': 'fadeOut 1s ease-in 6s forwards',
+      'fade-out-7': 'fadeOut 1s ease-in 7s forwards',
+      'fade-out-8': 'fadeOut 1s ease-in 8s forwards',
     },
     keyframes: {
       fadeIn: {
