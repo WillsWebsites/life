@@ -9,7 +9,7 @@ const Singularity = ({ onComplete }: { onComplete: () => void }) => {
   return (
     <div className="w-full h-full animate-fade-in-3 relative">
       <div className="absolute top-4 left-1/2 -translate-x-1/2 flex justify-between w-[calc(100%-3rem)] items-center select-none">
-        <h2 className="text-white text-2xl font-bold">The Singularity</h2>
+        <h2 className="text-white text-2xl font-bold">01. The Singularity</h2>
         <p className="text-white text-sm flex items-center gap-2">
           <span>Potential Energy: </span>
           {showInfinity ? '∞' : `${potentialEnergy.toFixed(2)}%`}
