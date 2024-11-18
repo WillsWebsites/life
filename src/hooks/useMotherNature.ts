@@ -5,7 +5,7 @@ import { create } from 'zustand'
 export const useMotherNature = create<MotherNatureState & MotherNatureActions>((set, get) => ({
   hasOpened: false,
   isOpen: false,
-  cellCount: 99,
+  cellCount: 0,
   cellFactories: [],
   updateHasOpened: (value: boolean) => set(() => ({ hasOpened: value })),
   updateIsOpen: (value: boolean) => set(() => ({ isOpen: value })),

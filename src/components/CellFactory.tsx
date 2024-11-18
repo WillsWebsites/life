@@ -2,7 +2,6 @@ import { useMotherNature } from '@/hooks/useMotherNature'
 import { ICellFactory } from '@/types/cellFactory'
 import { Factory } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Button } from './ui/button'
 
 interface Props {
   cf: ICellFactory
