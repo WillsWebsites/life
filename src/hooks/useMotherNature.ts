@@ -1,3 +1,4 @@
+import { initialGameState } from '@/lib/gameState'
 import { generateRandomId } from '@/lib/utils'
 import { MotherNatureActions, MotherNatureState } from '@/types/motherNature'
 import { create } from 'zustand'
@@ -5,7 +6,7 @@ import { create } from 'zustand'
 export const useMotherNature = create<MotherNatureState & MotherNatureActions>((set, get) => ({
   hasOpened: false,
   isOpen: false,
-  cellCount: 0,
+  cellCount: initialGameState.cellCount,
   cellFactories: [],
   updateHasOpened: (value: boolean) => set(() => ({ hasOpened: value })),
   updateIsOpen: (value: boolean) => set(() => ({ isOpen: value })),

@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import BigBang from './components/BigBang'
+import { initialGameState } from './lib/gameState'
 import Earth from './stages/Earth'
 import Fate from './stages/Fate'
 import Intro from './stages/Intro'
 import Singularity from './stages/Singularity'
 
 function App() {
-  const [introComplete, setIntroComplete] = useState(false)
-  const [singularityComplete, setSingularityComplete] = useState(false)
-  const [bigBangComplete, setBigBangComplete] = useState(false)
-  const [fateComplete, setFateComplete] = useState(false)
+  const [introComplete, setIntroComplete] = useState(initialGameState.introComplete)
+  const [singularityComplete, setSingularityComplete] = useState(initialGameState.singularityComplete)
+  const [bigBangComplete, setBigBangComplete] = useState(initialGameState.bigBangComplete)
+  const [fateComplete, setFateComplete] = useState(initialGameState.fateComplete)
 
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full">
