@@ -4,10 +4,10 @@ import { MotherNatureActions, MotherNatureState } from '@/types/motherNature'
 import { create } from 'zustand'
 
 export const useMotherNature = create<MotherNatureState & MotherNatureActions>((set, get) => ({
-  hasOpened: false,
+  hasOpened: initialGameState.hasOpened,
   isOpen: false,
   cellCount: initialGameState.cellCount,
-  cellFactories: [],
+  cellFactories: initialGameState.cellFactories,
   updateHasOpened: (value: boolean) => set(() => ({ hasOpened: value })),
   updateIsOpen: (value: boolean) => set(() => ({ isOpen: value })),
   updateCellCount: (newCount: number) => set(() => ({ cellCount: newCount })),
