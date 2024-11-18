@@ -63,7 +63,6 @@ const SingularityClicker = ({
     }
 
     setScale((prevScale) => {
-      console.log(prevScale)
       if (prevScale >= 7.1) {
         setComplete(true)
         document.body.style.cursor = 'auto'
