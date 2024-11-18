@@ -1,15 +1,7 @@
 export const initialGameState = {
-  introComplete: false,
-  singularityComplete: false,
-  bigBangComplete: false,
-  fateComplete: false,
-  cellCount: 0,
+  introComplete: JSON.parse(import.meta.env.VITE_INTRO_COMPLETE || 'false'),
+  singularityComplete: JSON.parse(import.meta.env.VITE_SINGULARITY_COMPLETE || 'false'),
+  bigBangComplete: JSON.parse(import.meta.env.VITE_BIG_BANG_COMPLETE || 'false'),
+  fateComplete: JSON.parse(import.meta.env.VITE_FATE_COMPLETE || 'false'),
+  cellCount: parseInt(import.meta.env.VITE_CELL_COUNT || '0'),
 }
-
-// export const initialGameState = {
-//   introComplete: true,
-//   singularityComplete: true,
-//   bigBangComplete: true,
-//   fateComplete: true,
-//   cellCount: 99,
-// }
