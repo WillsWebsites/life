@@ -7,16 +7,16 @@ type MotherNatureState = {
 }
 
 type MotherNatureActions = {
-  updateHasOpened: () => void
+  updateHasOpened: (value: boolean) => void
   updateCellCount: (newCount: number) => void
-  updateCellFactoryCount: () => void
+  purchaseCellFactory: () => void
 }
 
 export const useMotherNature = create<MotherNatureState & MotherNatureActions>((set) => ({
   hasOpened: false,
-  cellCount: 100,
+  cellCount: 0,
   cellFactoryCount: 0,
-  updateHasOpened: () => set((state) => ({ hasOpened: !state.hasOpened })),
+  updateHasOpened: (value: boolean) => set(() => ({ hasOpened: value })),
   updateCellCount: (newCount: number) => set(() => ({ cellCount: newCount })),
-  updateCellFactoryCount: () => set((state) => ({ cellFactoryCount: state.cellFactoryCount + 1 })),
+  purchaseCellFactory: () => set((state) => ({ cellFactoryCount: state.cellFactoryCount + 1 })),
 }))

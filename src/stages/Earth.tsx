@@ -10,8 +10,10 @@ const defaultCell = { id: generateRandomId(), x: window.innerWidth / 2, y: windo
 
 const Earth = () => {
   const [cells, setCells] = useState([defaultCell])
+
   const cellCount = useMotherNature((state) => state.cellCount)
   const updateCellCount = useMotherNature((state) => state.updateCellCount)
+  const hasOpened = useMotherNature((state) => state.hasOpened)
 
   const handleCellClick = (id: string) => {
     const intensity = 2
@@ -62,7 +64,7 @@ const Earth = () => {
   return (
     <StageLayout className="bg-gradient-to-br from-slate-700 to-slate-900">
       <TopBar stage={Stages.EARTH}>
-        <TopBarItem value={cellCount} name="Cells" />
+        <TopBarItem value={cellCount} name="Cells" busting={cellCount >= 100 && !hasOpened} />
       </TopBar>
       {cells.map((cell) => (
         <button
