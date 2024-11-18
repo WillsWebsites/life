@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { useSettings } from '@/hooks/useSettings'
+import { useStoryline } from '@/hooks/useStoryline'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { TypeAnimation } from 'react-type-animation'
@@ -10,12 +11,14 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
   const [createLight, setCreateLight] = useState(false)
 
   const handleAudioPlay = useSettings((state) => state.handleAudioPlay)
+  const updateIntroComplete = useStoryline((state) => state.updateIntroComplete)
 
   const handleCreateLight = () => {
     setCreateLight(true)
     handleAudioPlay()
     setTimeout(() => {
       onComplete()
+      updateIntroComplete(true)
     }, 2000)
   }
 
