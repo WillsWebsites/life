@@ -1,6 +1,5 @@
 import { useMotherNature } from '@/hooks/useMotherNature'
 import { cn } from '@/lib/utils'
-import { useEffect } from 'react'
 import { DrawerDescription, DrawerTitle } from './ui/drawer'
 
 const messages = [
@@ -19,10 +18,6 @@ const messages = [
 const MotherNatureDescription = () => {
   const hasOpened = useMotherNature((state) => state.hasOpened)
   const randomMessage = messages[Math.floor(Math.random() * messages.length)]
-
-  useEffect(() => {
-    console.log('here')
-  }, [])
 
   return (
     <div

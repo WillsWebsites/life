@@ -10,11 +10,12 @@ import { Drawer, DrawerClose, DrawerContent, DrawerTrigger } from './ui/drawer'
 const MotherNature = () => {
   const cellCount = useMotherNature((state) => state.cellCount)
   const hasOpened = useMotherNature((state) => state.hasOpened)
+  const updateIsOpen = useMotherNature((state) => state.updateIsOpen)
 
-  if (cellCount < 100) return null
+  if (cellCount < 100 && !hasOpened) return null
 
   return (
-    <Drawer>
+    <Drawer onOpenChange={(value) => updateIsOpen(value)}>
       <DrawerTrigger asChild>
         <button>
           <Leaf className={cn('transition-transform', !hasOpened && 'animate-rainbow')} />

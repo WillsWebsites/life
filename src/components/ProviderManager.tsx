@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import Collections from './Collections'
 import UtilityControls from './UtilityControls'
 import { TooltipProvider } from './ui/tooltip'
 
@@ -9,6 +10,7 @@ const ProviderManager = ({ children }: { children: React.ReactNode }) => {
       <BrowserRouter>
         <TooltipProvider>
           {children}
+          <Collections />
           <UtilityControls />
         </TooltipProvider>
       </BrowserRouter>

@@ -7,7 +7,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 const Shop = () => {
   const [confirmPurchase, setConfirmPurchase] = useState(false)
 
-  const cellFactoryCount = useMotherNature((state) => state.cellFactoryCount)
+  const cellCount = useMotherNature((state) => state.cellCount)
+  const cellFactories = useMotherNature((state) => state.cellFactories)
   const purchaseCellFactory = useMotherNature((state) => state.purchaseCellFactory)
 
   const confirmPurchaseHandler = () => {
@@ -25,17 +26,16 @@ const Shop = () => {
               className="flex flex-col bg-slate-400/20 p-4 rounded-lg text-center items-center border-slate-200/40 border-[1px] hover:bg-slate-400/25 transition-all"
             >
               <>
-                <div className="flex justify-center mb-2">
+                <div className="flex justify-between items-end mb-2 w-full">
                   <Factory />
+                  <span>{cellFactories.length}</span>
                 </div>
-                <span>{cellFactoryCount}</span>
-                <span>Cell Factory</span>
+                <span>Cell Factories</span>
               </>
             </TooltipTrigger>
             <TooltipContent className="max-w-[250px]">
               <p>
-                The Cell Factory produces new cells, essential for sustaining life and maintaining balance in
-                nature.
+                Cell Factories produce new cells, essential for sustaining life and maintaining balance in nature.
               </p>
             </TooltipContent>
           </Tooltip>
@@ -56,6 +56,7 @@ const Shop = () => {
               <Button
                 className="bg-white text-black hover:bg-white/80 hover:text-black text-xs px-2 py-0 h-8"
                 onClick={confirmPurchaseHandler}
+                disabled={cellFactories.length >= 1 || cellCount < 100}
               >
                 <Check />
               </Button>
