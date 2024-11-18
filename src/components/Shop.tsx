@@ -1,47 +1,39 @@
 import { useMotherNature } from '@/hooks/useMotherNature'
-import { Check, Factory, X } from 'lucide-react'
-import { useState } from 'react'
-import { Button } from './ui/button'
-import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
+import { Factory } from 'lucide-react'
+import ShopCellFactory from './ShopCellFactory'
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 
 const Shop = () => {
-  const [confirmPurchase, setConfirmPurchase] = useState(false)
-
-  const cellCount = useMotherNature((state) => state.cellCount)
   const cellFactories = useMotherNature((state) => state.cellFactories)
-  const purchaseCellFactory = useMotherNature((state) => state.purchaseCellFactory)
-
-  const confirmPurchaseHandler = () => {
-    purchaseCellFactory()
-    setConfirmPurchase(false)
-  }
 
   return (
     <div className="animate-fade-in-1 mt-12 flex w-full px-4">
       <>
-        {!confirmPurchase && (
-          <Tooltip>
-            <TooltipTrigger
-              onClick={() => setConfirmPurchase(true)}
-              className="flex flex-col bg-slate-400/20 p-4 rounded-lg text-center items-center border-slate-200/40 border-[1px] hover:bg-slate-400/25 transition-all"
-            >
-              <>
-                <div className="flex justify-between items-end mb-2 w-full">
-                  <Factory />
-                  <span>{cellFactories.length}</span>
-                </div>
-                <span>Cell Factories</span>
-              </>
-            </TooltipTrigger>
-            <TooltipContent className="max-w-[250px]">
-              <p>
-                Cell Factories produce new cells, essential for sustaining life and maintaining balance in nature.
-              </p>
-            </TooltipContent>
-          </Tooltip>
-        )}
+        <Popover>
+          <PopoverTrigger className="flex flex-col bg-slate-400/20 p-4 rounded-lg text-center items-center border-slate-200/40 border-[1px] hover:bg-slate-400/25 transition-all">
+            <>
+              <div className="flex justify-between items-end mb-2 w-full">
+                <Factory />
+                <span>{cellFactories.length}</span>
+              </div>
+              <span>Cell Factories</span>
+            </>
+          </PopoverTrigger>
+          <PopoverContent className="min-w-[400px]">
+            <h3 className="text-lg font-bold font-orbitron">Cell Factories</h3>
+            <p>
+              Cell Factories produce new cells, essential for sustaining life and maintaining balance in nature.
+            </p>
+            <div className="flex gap-2 pt-4">
+              {cellFactories.length === 0 && <ShopCellFactory variant="initial" />}
+              {cellFactories.map((factory) => (
+                <ShopCellFactory key={factory.id} factory={factory} />
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
 
-        {confirmPurchase && (
+        {/* {confirmPurchase && (
           <div className="flex flex-col bg-slate-400/20 p-4 rounded-lg text-center items-center border-slate-200/40 border-[1px] hover:bg-slate-400/25 transition-all">
             <span>Requirement:</span>
             <span>100 Cells</span>
@@ -62,7 +54,7 @@ const Shop = () => {
               </Button>
             </div>
           </div>
-        )}
+        )} */}
       </>
     </div>
   )
