@@ -29,6 +29,7 @@ const Shop = () => {
               {cellFactories.map((factory) => (
                 <ShopCellFactory key={factory.id} factory={factory} />
               ))}
+              {cellFactories.length >= 1 && <ShopCellFactory variant="additional" />}
             </div>
           </PopoverContent>
         </Popover>

@@ -1,6 +1,7 @@
 import { useMotherNature } from '@/hooks/useMotherNature'
+import { cn } from '@/lib/utils'
 import { ICellFactory } from '@/types/cellFactory'
-import { Wrench } from 'lucide-react'
+import { Lock, Wrench } from 'lucide-react'
 import { Button } from './ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu'
 
@@ -12,9 +13,13 @@ type Props =
       variant?: 'default'
       factory: ICellFactory
     }
+  | {
+      variant?: 'additional'
+    }
 
 const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
   const isDefault = variant === 'default' && 'factory' in props
+  const isAdditional = variant === 'additional'
   const globalCellCount = useMotherNature((state) => state.cellCount)
   const purchaseCellFactory = useMotherNature((state) => state.purchaseCellFactory)
   const updateCellFactory = useMotherNature((state) => state.updateCellFactory)
@@ -22,7 +27,10 @@ const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
   return (
     <div
       key={variant === 'default' && 'factory' in props ? props.factory.id : 'initial'}
-      className="flex flex-col items-start justify-start px-2 py-4 rounded-md bg-gray-800/80 min-w-[100px] min-h-[100px] border-gray-200/60 border-[1px] relative"
+      className={cn(
+        'flex flex-col items-start justify-start px-2 py-4 rounded-md bg-gray-800/80 min-w-[150px] min-h-[100px] border-gray-200/60 border-[1px] relative',
+        isAdditional && 'items-center justify-center opacity-50 cursor-not-allowed',
+      )}
     >
       {variant === 'initial' && (
         <>
@@ -86,6 +94,8 @@ const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
           </span>
         </>
       )}
+
+      {isAdditional && <Lock />}
     </div>
   )
 }
