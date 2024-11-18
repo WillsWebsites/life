@@ -13,7 +13,12 @@ type SettingsActions = {
 }
 
 export const useSettings = create<SettingsState & SettingsActions>((set) => ({
-  audio: new Audio(creationAudioSRC),
+  audio: (() => {
+    const audio = new Audio(creationAudioSRC)
+    audio.volume = 0.1
+    audio.loop = true
+    return audio
+  })(),
   isPlaying: true,
   audioVolume: 0.1,
   updateIsAudioPaused: (newIsAudioPaused: boolean) => {

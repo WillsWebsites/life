@@ -45,7 +45,7 @@ const Intro = ({ onComplete }: { onComplete: () => void }) => {
               },
             ]}
             wrapper="span"
-            speed={20}
+            speed={40}
             style={{
               fontSize: '2em',
               display: 'inline-block',

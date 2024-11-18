@@ -63,15 +63,18 @@ const SingularityClicker = ({
     }
 
     setScale((prevScale) => {
+      console.log(prevScale)
       if (prevScale >= 7.1) {
         setComplete(true)
         document.body.style.cursor = 'auto'
         startScaleDown()
         return prevScale
       } else if (prevScale >= 5) {
-        return prevScale - prevScale * 0.0025
+        return prevScale - prevScale * 0.00075
+      } else if (prevScale >= 3) {
+        return prevScale - prevScale * 0.001
       } else if (prevScale >= 0.2) {
-        return prevScale - prevScale * 0.004
+        return prevScale - prevScale * 0.002
       } else {
         return prevScale
       }

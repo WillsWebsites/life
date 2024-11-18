@@ -41,7 +41,7 @@ const MotherNatureIntro = () => {
           },
         ]}
         wrapper="span"
-        speed={50}
+        speed={40}
         style={{
           fontSize: '1.4em',
           display: 'inline-block',
