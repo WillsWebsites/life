@@ -16,7 +16,7 @@ const Earth = () => {
   const hasOpened = useMotherNature((state) => state.hasOpened)
 
   const handleCellClick = (id: string) => {
-    const intensity = 2
+    const intensity = 4
     const randomX = Math.floor(Math.random() * 100 * intensity) - 50 * intensity
     const randomY = Math.floor(Math.random() * 100 * intensity) - 50 * intensity
 
