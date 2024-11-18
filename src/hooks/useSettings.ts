@@ -15,7 +15,7 @@ type SettingsActions = {
 export const useSettings = create<SettingsState & SettingsActions>((set) => ({
   audio: (() => {
     const audio = new Audio(creationAudioSRC)
-    audio.volume = 0.1
+    audio.volume = 0.2
     audio.loop = true
     return audio
   })(),
