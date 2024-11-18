@@ -2,7 +2,7 @@ import { cn, generateRandomId } from '@/lib/utils'
 import { useEffect, useState } from 'react'
 
 const Enemies = () => {
-  const [enemies, setEnemies] = useState<{ id: string; x: number; y: number }[]>([])
+  const [enemies, setEnemies] = useState<{ id: string; x: number; y: number; health: number }[]>([])
 
   useEffect(() => {
     const spawnEnemy = () => {
@@ -25,6 +25,7 @@ const Enemies = () => {
               : side === 2
                 ? window.innerHeight
                 : Math.random() * window.innerHeight,
+        health: 5,
       }
       setEnemies((prevEnemies) => [...prevEnemies, newEnemy])
     }
@@ -56,6 +57,14 @@ const Enemies = () => {
     }
   }, [])
 
+  const handleEnemyClick = (id: string) => {
+    setEnemies((prevEnemies) =>
+      prevEnemies.find((enemy) => enemy.id === id)?.health === 1
+        ? prevEnemies.filter((enemy) => enemy.id !== id)
+        : prevEnemies.map((enemy) => (enemy.id === id ? { ...enemy, health: enemy.health - 1 } : enemy)),
+    )
+  }
+
   return (
     <>
       {enemies.map((enemy) => (
@@ -64,6 +73,9 @@ const Enemies = () => {
           className={cn(
             'bg-gradient-to-r from-green-300 to-green-500 rounded-full w-16 h-16 shadow-lg text-white text-2xl hover:scale-110 transition-transform active:scale-125',
           )}
+          onClick={() => {
+            handleEnemyClick(enemy.id)
+          }}
           style={{ position: 'absolute', left: `${enemy.x}px`, top: `${enemy.y}px` }}
         />
       ))}
