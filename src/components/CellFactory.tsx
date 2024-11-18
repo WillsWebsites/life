@@ -15,7 +15,7 @@ const CellFactory = ({ cf }: Props) => {
 
   const collectCellsHandler = () => {
     if (cellCount < 1) return
-    updateCellFactory(cf.id, 0)
+    updateCellFactory(cf.id, { cells: 0 })
     updateGlobalCellCount(globalCellCount + cellCount)
     setCellCount(0)
   }
@@ -25,8 +25,8 @@ const CellFactory = ({ cf }: Props) => {
       if (cellCount >= cf.maxCells) return
 
       setCellCount((prevCount) => {
-        updateCellFactory(cf.id, prevCount + 1)
-        return prevCount + 1
+        updateCellFactory(cf.id, { cells: prevCount + 1 * cf.multiplier })
+        return prevCount + 1 * cf.multiplier
       })
     }, 1000)
 

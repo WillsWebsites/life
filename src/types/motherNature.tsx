@@ -12,5 +12,5 @@ export type MotherNatureActions = {
   updateIsOpen: (value: boolean) => void
   updateCellCount: (newCount: number) => void
   purchaseCellFactory: () => void
-  updateCellFactory: (id: string, newCells: number) => void
+  updateCellFactory: (id: string, updates: Partial<ICellFactory>) => void
 }

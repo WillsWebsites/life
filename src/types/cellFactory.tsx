@@ -3,4 +3,5 @@ export interface ICellFactory {
   cells: number
   maxCells: number
   level: number
+  multiplier: number
 }

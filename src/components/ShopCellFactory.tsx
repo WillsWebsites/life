@@ -17,6 +17,7 @@ const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
   const isDefault = variant === 'default' && 'factory' in props
   const globalCellCount = useMotherNature((state) => state.cellCount)
   const purchaseCellFactory = useMotherNature((state) => state.purchaseCellFactory)
+  const updateCellFactory = useMotherNature((state) => state.updateCellFactory)
 
   return (
     <div
@@ -57,7 +58,11 @@ const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
             <DropdownMenuContent className="w-32">
               <DropdownMenuItem
                 onClick={() => {
-                  console.log('upgrade')
+                  updateCellFactory(props.factory.id, {
+                    level: props.factory.level + 1,
+                    maxCells: props.factory.maxCells * 2,
+                    multiplier: props.factory.multiplier * 2,
+                  })
                 }}
                 className="cursor-pointer flex justify-between items-center"
                 disabled={globalCellCount < 500}
@@ -72,6 +77,9 @@ const ShopCellFactory = ({ variant = 'default', ...props }: Props) => {
           </span>
           <span>
             Capacity: <span className="font-orbitron font-bold">{props.factory.maxCells}</span>
+          </span>
+          <span>
+            Multiplier: <span className="font-orbitron font-bold">{props.factory.multiplier}</span>
           </span>
           <span>
             Cells: <span className="font-orbitron font-bold">{props.factory.cells}</span>
