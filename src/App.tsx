@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import BigBang from './components/BigBang'
-import { initialGameState } from './lib/gameState'
+import { initialGameState } from './lib/initialGameState'
 import Earth from './stages/Earth'
 import Fate from './stages/Fate'
 import Intro from './stages/Intro'

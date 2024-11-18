@@ -1,4 +1,4 @@
-import { initialGameState } from '@/lib/gameState'
+import { initialGameState } from '@/lib/initialGameState'
 import { generateRandomId } from '@/lib/utils'
 import { MotherNatureActions, MotherNatureState } from '@/types/motherNature'
 import { create } from 'zustand'
